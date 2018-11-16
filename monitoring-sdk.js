@@ -2,14 +2,14 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-16 14:47:10
+ * @Last Modified time: 2018-11-16 16:59:20
  */
 
  class MonitoringSDK{
      constructor(){
-        // window.addEventListener('error', (e) => {
-        //     console.log(e, 'error')
-        // })
+        window.addEventListener('error', (e) => {
+            console.log(e, 'error')
+        })
 
         // window.onerror = (e) => {
         //     console.log(e,'onerror')
