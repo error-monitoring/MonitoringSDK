@@ -42,7 +42,7 @@ class Serving {
 
     start() {
         this.app.use(this.router.routes()).use(this.router.allowedMethods());
-        this.app.listen(9090, '0.0.0.0');
+        this.app.listen(7400, '0.0.0.0');
         console.log('服务启动成功')
     }
 
