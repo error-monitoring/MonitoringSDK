@@ -16,7 +16,7 @@ const getOsInfo = () => {
             version = "Windows 8";
         } else if (userAgent.includes("windows nt 6.3")) {
             version = "Windows 8.1";
-        } else if (userAgent.includes("windows nt 6.2") || userAgent.indincludesexOf("windows nt 10.0")) {
+        } else if (userAgent.includes("windows nt 6.2") || userAgent.includes("windows nt 10.0")) {
             version = "Windows 10";
         } else {
             version = "";
