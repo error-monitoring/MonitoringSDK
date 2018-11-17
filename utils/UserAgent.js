@@ -177,7 +177,7 @@ function getBrowerInfo() {
     }
     const {name, type, version} = System
     return {
-        agent,
+        // agent,
         type,
         version,
         name
