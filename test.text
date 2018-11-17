@@ -1,0 +1,26 @@
+"dev": "parcel monitoring-sdk.js --out-dir dist",
+    "build": "parcel build monitoring-sdk.js --out-dir dist",
+
+     "process.env._keyStr": JSON.stringify('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='),
+        "process.env._Replace_keyStr": JSON.stringify('АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШабвгдеёжзийклмнопруфхцчшщъèīíǐìūúǔùǖǘǚǜ'),
+
+
+
+
+        // let a = {
+        //     errorType: 'error',
+        //     errorData: {
+        //         message: 'Uncaught ReferenceError: a is not defined',
+        //         filename: 'http://game2.liaoyantech.cn/js/app.59e61edb.js',
+        //         lineno: "1",
+        //         colno: '4021',
+        //         error: ` ReferenceError: a is not defined
+        //             at Module.56d7 (App.vue:10)
+        //             at i (bootstrap:88)
+        //             at Object.0 (bootstrap:260)
+        //             at i (bootstrap:88)
+        //             at t (bootstrap:45)
+        //             at bootstrap:260
+        //             at bootstrap:260`
+        //     }
+        // }

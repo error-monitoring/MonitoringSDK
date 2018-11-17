@@ -4,21 +4,25 @@ const fs = require('fs')
 const serve = require('koa-static')
 const cors = require('koa2-cors');
 const convert = require('koa-convert')
+const bodyParser = require('koa-bodyparser')
+const Decrypt = require('./Decrypt')
+const ip = require('ip')
 class Serving {
 
     constructor() {
         this.app = new Koa()
         this.router = new Router();
-        this.app.use(cors())
-        this.app.use(convert(cors()))
+        // this.app.use(cors())
+        this.app.use(bodyParser())
         this.app.use(async (ctx, next) => {
+            
+            ctx.set('Access-Control-Allow-Headers', 'content-type');
             ctx.set('Access-Control-Allow-Credentials', true);
-            // ctx.get('Origin')
-            ctx.set('Access-Control-Allow-Origin', '*');
-            ctx.set('Content-type', 'text/javascript');
+            ctx.set('Access-Control-Allow-Origin', ctx.get('Origin'));
             ctx.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-            ctx.set("Vary", "Origin");
             ctx.vary('Origin')
+            // 缓存OPTIONS
+            ctx.set('Access-Control-Max-Age', 1728000);
             await next()
         })
         this.app.use(serve((__dirname + '/dist')))
@@ -26,25 +30,25 @@ class Serving {
     }
 
     routers() {
-        this.router.get('/test', async (ctx, next) => {
-            const data = fs.readFileSync('./dist/monitoring-sdk.js', 'utf8');
-            // ctx.set('Access-Control-Allow-Credentials', true);
-            // ctx.set('Access-Control-Allow-Origin', ctx.get('Origin'));
-            // ctx.set('Content-type', 'text/javascript');
-            // ctx.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-            // ctx.set("Vary", "Origin");
-            ctx.vary('Origin')
-
-
-            ctx.body = data
+        this.router.post('/api/send/event', async (ctx, next) => {
+            let {k} = ctx.request.body
+            let {data} = new Decrypt(k)
+            ctx.body = {
+                code:200,
+                data,
+                message:''
+            }
         })
     }
 
     start() {
         this.app.use(this.router.routes()).use(this.router.allowedMethods());
-        this.app.listen(7401, '172.16.100.38');
-        // this.app.listen(7401, '0.0.0.0');
-        console.log('服务启动成功')
+        if(process.env.EVENT == 'dev'){
+            this.app.listen(7401, ip.address());
+        }else{
+            this.app.listen(7401, '172.16.100.38');
+        }
+        console.log(`服务启动成功 http://${ip.address()}:7401`)
     }
 
 }
