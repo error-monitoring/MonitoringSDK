@@ -20,30 +20,50 @@ import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 
 
 export default {
-    input: './MonitoringSDK.js',
-    output: {
-      file: `./dist/MonitoringSDK.js`,
-      format: 'iife',
-      name:"MonitoringSDK",
-    },
-    
-    plugins: [
-       // 注入全局变量
-       replace({
-        "process.env._keyStr": JSON.stringify(''),
-        "process.env._Replace_keyStr": JSON.stringify(''),
-      }),
-      // 判断环境是否进行代码压缩
-      (process.env.NODE_ENV === 'prod' && uglify()),
-      resolve(),
-      commonjs(),
-      babel({
-        babelrc: false,
-        presets: ["es2015-rollup"],
-        exclude: 'node_modules/**',
-      }),
-      globals(),
-      builtins(),
-      (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({compact: true}) ),
-    ]
-  };
+  input: './MonitoringSDK.js',
+  output: {
+    file: `./dist/MonitoringSDK.js`,
+    format: 'iife',
+    name: "MonitoringSDK",
+  },
+
+  plugins: [
+    // 注入全局变量
+    replace({
+      "process.env._keyStr": JSON.stringify(''),
+      "process.env._Replace_keyStr": JSON.stringify(''),
+    }),
+    // 判断环境是否进行代码压缩
+    (process.env.NODE_ENV === 'prod' && uglify()),
+    resolve(),
+    commonjs(),
+    babel({
+      babelrc: false,
+      presets: ["es2015-rollup"],
+      exclude: 'node_modules/**',
+    }),
+    globals(),
+    builtins(),
+    (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
+      compact: true,
+      controlFlowFlattening: true,
+      controlFlowFlatteningThreshold: 1,
+      deadCodeInjection: true,
+      deadCodeInjectionThreshold: 1,
+      debugProtection: true,
+      debugProtectionInterval: true,
+      disableConsoleOutput: true,
+      identifierNamesGenerator: 'hexadecimal',
+      log: false,
+      renameGlobals: false,
+      rotateStringArray: true,
+      selfDefending: true,
+      stringArray: true,
+      stringArrayEncoding: 'rc4',
+      stringArrayThreshold: 1,
+      transformObjectKeys: true,
+      unicodeEscapeSequence: false
+
+    })),
+  ]
+};
