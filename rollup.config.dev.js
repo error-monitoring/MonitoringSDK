@@ -34,7 +34,7 @@ export default {
       "process.env._Replace_keyStr": JSON.stringify(''),
     }),
     // 判断环境是否进行代码压缩
-    (process.env.NODE_ENV === 'prod' && uglify()),
+    // (process.env.NODE_ENV === 'prod' && uglify()),
     resolve(),
     commonjs(),
     babel({
@@ -44,9 +44,9 @@ export default {
     }),
     globals(),
     builtins(),
-    (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
-      compact: true,
+    // (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
+    //   compact: true,
 
-    })),
+    // })),
   ]
 };
