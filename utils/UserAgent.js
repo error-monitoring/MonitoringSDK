@@ -176,11 +176,16 @@ function getBrowerInfo() {
         //						console.log(e.message);
     }
     const {name, type, version} = System
+    const {host, href} = window.location
+    const title = document.title
     return {
-        // agent,
+        agent,
         type,
         version,
-        name
+        name,
+        host,
+        href,
+        title
     }
    
 

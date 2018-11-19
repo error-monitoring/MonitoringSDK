@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-17 10:26:00
+ * @Last Modified time: 2018-11-19 22:11:02
  */
 
 import {
@@ -16,6 +16,8 @@ import {
     getOsInfo,
     getBrowerInfo
 } from './utils/UserAgent'
+
+import {Performance} from './lib/Performance'
 
 
 
@@ -33,6 +35,7 @@ class MonitoringSDK {
         .set('browerInfo', getBrowerInfo())
         .set('debug', this.debug)
         new ListenError();
+        new Performance()
     }
 }
 

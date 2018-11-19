@@ -46,23 +46,6 @@ export default {
     builtins(),
     (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
       compact: true,
-      controlFlowFlattening: true,
-      controlFlowFlatteningThreshold: 1,
-      deadCodeInjection: true,
-      deadCodeInjectionThreshold: 1,
-      debugProtection: false,
-      debugProtectionInterval: false,
-      disableConsoleOutput: true,
-      identifierNamesGenerator: 'hexadecimal',
-      log: false,
-      renameGlobals: false,
-      rotateStringArray: true,
-      selfDefending: true,
-      stringArray: true,
-      stringArrayEncoding: 'rc4',
-      stringArrayThreshold: 1,
-      transformObjectKeys: true,
-      unicodeEscapeSequence: false
 
     })),
   ]
