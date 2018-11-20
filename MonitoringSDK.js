@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-20 18:00:12
+ * @Last Modified time: 2018-11-20 18:02:06
  */
 
 import {
@@ -39,7 +39,10 @@ class MonitoringSDK {
     }
     test(){
         let old = XMLHttpRequest;
-XMLHttpRequest = function() { console.log(arguments); return old.apply(this, arguments); }
+        window.XMLHttpRequest = function() {
+            console.log(arguments)
+            return old.apply(this, arguments); 
+        }
     }
 }
 
