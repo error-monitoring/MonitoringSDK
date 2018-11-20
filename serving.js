@@ -59,6 +59,10 @@ class Serving {
                 message:''
             }
         })
+        this.router.get('/api/404', async (ctx, next) => {
+            ctx.status = 404
+            
+        })
     }
 
     start() {
