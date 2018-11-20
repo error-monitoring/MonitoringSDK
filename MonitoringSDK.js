@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-20 14:16:04
+ * @Last Modified time: 2018-11-20 17:59:38
  */
 
 import {
@@ -27,6 +27,7 @@ class MonitoringSDK {
     } ={}) {
         this.debug = debug
         this.initSDK()
+        this.test()
     }
     initSDK() {
         DataStore.getInstance()
@@ -35,6 +36,10 @@ class MonitoringSDK {
         .set('debug', this.debug)
         new ListenError();
         new Performance()
+    }
+    test(){
+        old = XMLHttpRequest;
+XMLHttpRequest = function() { console.log(arguments); return old.apply(this, arguments); }
     }
 }
 
