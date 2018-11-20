@@ -7,6 +7,10 @@ const convert = require('koa-convert')
 const bodyParser = require('koa-bodyparser')
 const Decrypt = require('./Decrypt')
 const ip = require('ip')
+
+let buildPath = `sh ${process.cwd()}/build.sh`
+
+const child_process = require('child_process');
 class Serving {
 
     constructor() {
@@ -36,6 +40,22 @@ class Serving {
             ctx.body = {
                 code:200,
                 data,
+                message:''
+            }
+        })
+
+        this.router.get('/api/build', async (ctx, next) => {
+            console.log(buildPath)
+            child_process.execFile(buildPath, [], { shell: '/bin/bash' }, (error, stdout, stderr) => {
+                if(!error){
+                    setTimeout(() => {
+                    child_process.exec('pm2 start serving.js',{encoding:'utf8'},()=>{})
+                },1)
+                }
+            });
+            ctx.body = {
+                code:200,
+                data:"",
                 message:''
             }
         })
