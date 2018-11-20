@@ -1,4 +1,4 @@
-pm2 stop serving
+# pm2 stop serving
 git pull
 yarn build
 

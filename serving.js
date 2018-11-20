@@ -49,7 +49,7 @@ class Serving {
             child_process.execFile(buildPath, [], { shell: '/bin/bash' }, (error, stdout, stderr) => {
                 if(!error){
                     setTimeout(() => {
-                    child_process.exec('pm2 start serving.js',{encoding:'utf8'},()=>{})
+                    child_process.exec('pm2 restart serving',{encoding:'utf8'},()=>{})
                 },1)
                 }
             });
