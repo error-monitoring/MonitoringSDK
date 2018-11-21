@@ -18,17 +18,17 @@ class Serving {
         this.router = new Router();
         this.app.use(cors())
         this.app.use(bodyParser())
-        // this.app.use(async (ctx, next) => {
+        this.app.use(async (ctx, next) => {
             
-        //     ctx.set('Access-Control-Allow-Headers', 'content-type');
-        //     ctx.set('Access-Control-Allow-Credentials', true);
-        //     ctx.set('Access-Control-Allow-Origin', ctx.get('Origin'));
-        //     ctx.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-        //     ctx.vary('Origin')
-        //     // 缓存OPTIONS
-        //     ctx.set('Access-Control-Max-Age', 1728000);
-        //     await next()
-        // })
+            // ctx.set('Access-Control-Allow-Headers', 'content-type');
+            // ctx.set('Access-Control-Allow-Credentials', true);
+            // ctx.set('Access-Control-Allow-Origin', ctx.get('Origin'));
+            // ctx.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+            // ctx.vary('Origin')
+            // 缓存OPTIONS
+            ctx.set('Access-Control-Max-Age', 1728000);
+            await next()
+        })
         this.app.use(serve((__dirname + '/dist')))
         this.routers()
     }
