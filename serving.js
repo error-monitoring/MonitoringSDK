@@ -60,7 +60,7 @@ class Serving {
             }
         })
         this.router.all('/api/404', async (ctx, next) => {
-            ctx.status = 404
+            ctx.status = 500
             
         })
     }
