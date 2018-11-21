@@ -9,7 +9,8 @@
     "dev-s": "EVENT=dev nodemon serving.js ",
     "dev": "NODE_ENV=dev rollup --watch --config rollup.config.dev.js",
     "build": "NODE_ENV=prod rollup --config rollup.config.dev.js",
-    "curl":"curl http://47.98.132.24:7401/api/build"
+    "curl":"curl http://47.98.132.24:7401/api/build",
+    "push":"sh push.sh"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
