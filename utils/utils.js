@@ -29,5 +29,5 @@ export const getUUID = () => {
  */
 export const getDomain = (host = window.location.host) => {
     host = host.split(':')[0]
-    return isNaN(host.substring(host.lastIndexOf('.'))) ? host.substring(host.substring(0, host.lastIndexOf('.')).lastIndexOf('.') + 1) : host
+    return isNaN(host.substring(host.lastIndexOf('.'))) ? `.${host.substring(host.substring(0, host.lastIndexOf('.')).lastIndexOf('.') + 1)}` : host
 }

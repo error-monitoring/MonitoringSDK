@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-23 01:53:43
+ * @Last Modified time: 2018-11-23 18:48:12
  */
 
 import {
@@ -15,10 +15,10 @@ import {
 } from './lib/DataStore'
 
 
-import {
-    getOsInfo,
-    getBrowerInfo
-} from './utils/UserAgent'
+// import {
+//     getOsInfo,
+//     getBrowerInfo
+// } from './utils/UserAgent'
 
 import {
     ListenPerformance
@@ -37,16 +37,18 @@ import {
     setCookie,
     getCookie
 } from './utils/Cookie'
-import {
-    Base64
-} from './utils/Base64'
+
+import {checkBrowser} from './utils/CheckBrowser'
+
 
 
 
 
 class MonitoringSDK {
     constructor() {
-        this.getConfig()
+        let a = new checkBrowser()
+        console.log(a)
+        // this.getConfig()
         // let b = new Base64()
         // let obj = {
         //     test:"我爱你中国",
@@ -94,8 +96,8 @@ class MonitoringSDK {
         }
         if (app_key) {
             DataStore.getInstance()
-                .set('osInfo', getOsInfo())
-                .set('browerInfo', getBrowerInfo())
+                // .set('osInfo', getOsInfo())
+                // .set('browerInfo', getBrowerInfo())
                 .set('app_key', app_key)
                 .set('debug', debug)
                 .set('error_code', error_code)

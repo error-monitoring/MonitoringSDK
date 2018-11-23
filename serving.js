@@ -34,11 +34,21 @@ class Serving {
     }
 
     routers() {
-        this.router.get('/api/send/event', async (ctx, next) => {
-            let {k} = ctx.request.query
-            let {data} = new Decrypt(k)
-            console.log(data)
+        this.router.all('/api/send/event', async (ctx, next) => {
+            let params = {}
+            if(ctx.method == 'GET'){
+                params = ctx.request.query
+            }else{
+                params = ctx.request.body
+            }
+            let {info} = params
+            let {data} = new Decrypt(info)
+            // console.log('====')
+            // console.log(data)
+            // console.log(ctx.ip)
+            console.log(ctx.request.header)
             ctx.status = 200
+            ctx.body = data
         })
 
         this.router.get('/api/build', async (ctx, next) => {

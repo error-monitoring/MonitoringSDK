@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-17 01:55:17 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-23 11:18:35
+ * @Last Modified time: 2018-11-23 12:17:06
  */
 
 class Decrypt {
@@ -29,27 +29,11 @@ class Decrypt {
 
     }
 
-    // 对乱码进行替换
+
     replace(arr) {
-        // 解密字符串
-        let _Replace_keyStr = 'DBCAEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
-        const _Original_KeyStr =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
-        
+ 
         let arrObj = arr.map((str) => {
-            // 替换为正常符号
-            for (let index in _Replace_keyStr) {
-                if (_Replace_keyStr[index] != '/' && _Replace_keyStr[index] != '+') {
-                    str = str.replace(new RegExp(_Replace_keyStr[index], "g"), _Original_KeyStr[index])
-                }
-
-            }
-            try {
-                // 对符号进行解码
-
-                return JSON.parse(this.decode(str))
-            } catch (error) {
-                return {}
-            }
+             return JSON.parse(this.decode(str))
         })
         let obj = {}
         // 数组合并
@@ -59,11 +43,11 @@ class Decrypt {
     }
 
     UTF8ToUTF16(str) {
-        var res = [],
+        let res = [],
             len = str.length;
-        var i = 0;
-        for (var i = 0; i < len; i++) {
-            var code = str.charCodeAt(i);
+        let i = 0;
+        for (let i = 0; i < len; i++) {
+            let code = str.charCodeAt(i);
             // 对第一个字节进行判断
             if (((code >> 7) & 0xFF) == 0x0) {
                 // 单字节
@@ -72,19 +56,19 @@ class Decrypt {
             } else if (((code >> 5) & 0xFF) == 0x6) {
                 // 双字节
                 // 110xxxxx 10xxxxxx
-                var code2 = str.charCodeAt(++i);
-                var byte1 = (code & 0x1F) << 6;
-                var byte2 = code2 & 0x3F;
-                var utf16 = byte1 | byte2;
+                let code2 = str.charCodeAt(++i);
+                let byte1 = (code & 0x1F) << 6;
+                let byte2 = code2 & 0x3F;
+                let utf16 = byte1 | byte2;
                 res.push(String.fromCharCode(utf16));
             } else if (((code >> 4) & 0xFF) == 0xE) {
                 // 三字节
                 // 1110xxxx 10xxxxxx 10xxxxxx
-                var code2 = str.charCodeAt(++i);
-                var code3 = str.charCodeAt(++i);
-                var byte1 = (code << 4) | ((code2 >> 2) & 0x0F);
-                var byte2 = ((code2 & 0x03) << 6) | (code3 & 0x3F);
-                var utf16 = ((byte1 & 0x00FF) << 8) | byte2
+                let code2 = str.charCodeAt(++i);
+                let code3 = str.charCodeAt(++i);
+                let byte1 = (code << 4) | ((code2 >> 2) & 0x0F);
+                let byte2 = ((code2 & 0x03) << 6) | (code3 & 0x3F);
+                let utf16 = ((byte1 & 0x00FF) << 8) | byte2
                 res.push(String.fromCharCode(utf16));
             } else if (((code >> 3) & 0xFF) == 0x1E) {
                 // 四字节
@@ -102,23 +86,14 @@ class Decrypt {
     }
 
     decode(str) {
-        const table = [
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-            'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-            'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-            'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-            'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-            'w', 'x', 'y', 'z', '0', '1', '2', '3',
-            '4', '5', '6', '7', '8', '9', '+', '/','='
-        ]
+        const table = 'DBCAEFGHIJKLMNOPQRSTUVWXZYdbcaefghijklnmopqrstuvwxyz1324568790+/='
         if (!str) {
             return '';
         }
 
-        var len = str.length;
-        var i = 0;
-        var res = [];
+        let len = str.length;
+        let i = 0;
+        let res = [];
 
         while (i < len) {
             let code1 = table.indexOf(str.charAt(i++));

@@ -15,7 +15,11 @@ export const setCookie = ({
     document.cookie = `${name}=${value};expires=${expdate.toGMTString()};path=${path};domain=${domain}`;
 }
 
-
+/**
+ * 
+ * @param {String} name 需要获取的key
+ * @return {String} 如果获取到了就返回 如果没有返回空
+ */
 export const getCookie = (name) => {
     //判断document.cookie对象里面是否存有cookie
     if (document.cookie.length > 0) {
