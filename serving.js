@@ -34,14 +34,11 @@ class Serving {
     }
 
     routers() {
-        this.router.post('/api/send/event', async (ctx, next) => {
-            let {k} = ctx.request.body
+        this.router.get('/api/send/event', async (ctx, next) => {
+            let {k} = ctx.request.query
             let {data} = new Decrypt(k)
-            ctx.body = {
-                code:200,
-                data,
-                message:''
-            }
+            console.log(data)
+            ctx.status = 200
         })
 
         this.router.get('/api/build', async (ctx, next) => {

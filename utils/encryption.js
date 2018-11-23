@@ -25,13 +25,14 @@ function generateNumber(){
 
 
 //将字符串转换成Unicode码
-function toUnicode(str){
+function toUnicode(str = 'DBCAEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='){
     let codes = [];
     for(let i=0;i<str.length;i++){
-        codes.push(str.charCodeAt(i));
+        codes.push(str.charCodeAt(i).toString('2'));
     }
     return codes;
 }
+toUnicode()
 
 function generateSmall(){
     let ch_small = 'a';

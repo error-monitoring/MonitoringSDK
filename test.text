@@ -24,3 +24,21 @@
         //             at bootstrap:260`
         //     }
         // }
+
+
+
+
+var script = document.getElementsByTagName('script'); //获取所有script
+const MonitoringSDK = document.getElementById('MonitoringSDK')
+for (let item of script) {
+    if(item.outerHTML.includes('MonitoringSDK')){
+        console.log(item.src)
+        const app_key = /app_key=([^&]+)/i.exec(item.src);
+        const error_code = /error_code=([^&]+)/i.exec(item.src)
+        console.log(app_key)
+    }
+}
+
+
+
+АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШабвгдеёжзийклмнопруфхцчшщъèīíǐìūúǔùǖǘǚǜ
