@@ -153,10 +153,6 @@ export class checkBrowser {
             }
 
         }
-        console.log({
-            osVersion: version,
-            osName: name
-        })
         return {
             osVersion: version,
             osName: name
