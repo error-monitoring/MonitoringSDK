@@ -1,36 +1,38 @@
 export class checkBrowser {
     constructor(userAgent = navigator.userAgent) {
-        this.userAgent = userAgent;
+        this.userAgent = userAgent.toLocaleLowerCase();
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
         // this.IPhone = this.userAgent.indexOf("iPhone") != -1;
         // this.Ios = this.userAgent.indexOf('iPhone') > -1 || this.userAgent.indexOf('Mac') > -1;
         // this.Ipad = this.userAgent.indexOf('iPad') > -1;
         //判断是否Opera浏览器 
-        this.isOpera = this.userAgent.includes("Opera");
+        this.isOpera = this.userAgent.includes("opera");
         //判断是否IE浏览器
-        this.isIE = this.userAgent.includes("compatible") && this.userAgent.includes('MSIE') && !this.isOpera;
+        this.isIE = this.userAgent.includes("compatible") && this.userAgent.includes('msie') && !this.isOpera;
         //判断是否IE的Edge浏览器
-        this.isEdge = this.userAgent.includes("Edge");
+        this.isEdge = this.userAgent.includes("edge");
         //判断是否Firefox浏览器
-        this.isFirefox = this.userAgent.includes('Firefox');
+        this.isFirefox = this.userAgent.includes('firefox');
         //判断是否Safari浏览器
-        this.isSafari = this.userAgent.includes('Safari') && this.userAgent.indexOf('Chrome') == -1;
+        this.isSafari = this.userAgent.includes('safari') && this.userAgent.indexOf('chrome') == -1;
         //判断是否Chrome浏览器
-        this.isChrome = !this.isEdge && this.userAgent.includes('Chrome') && this.userAgent.includes('Safari');
+        this.isChrome = !this.isEdge && this.userAgent.includes('chrome') && this.userAgent.includes('safari');
         // this.IE11 = this.userAgent.indexOf('Trident') > -1 && this.userAgent.indexOf('rv:11.0') > -1;
-        this.Wechat = !!this.userAgent.match(/MicroMessenger/i);
+        this.Wechat = !!this.userAgent.match(/micromessenger/i);
         // this.Weibo = !!this.userAgent.match(/Weibo/i);
         // this.UCBrowser = !!this.userAgent.match(/UCBrowser/i);
         // this.QQ = !!this.userAgent.match(/QQ/i);
         // this.QQBrowser = !this.userAgent.indexOf('MQQBrowser') > -1 && this.userAgent.indexOf('QQ/');
         // this.WinWeChat = !!this.userAgent.match(/WindowsWeChat/i); // PC微信端
+
+        
     }
 
 
     // 获取浏览器版本
     getBrowserVersion() {
         let Version = '';
-        const userAgent = this.userAgent.toLocaleLowerCase()
+        const userAgent = this.userAgent
         let s;
         (s = userAgent.match(/rv:([\d.]+)\) like gecko/)) ? Version = s[1]:
             (s = userAgent.match(/msie ([\d.]+)/)) ? Version = s[1] :
@@ -46,10 +48,10 @@ export class checkBrowser {
         const userAgent = this.userAgent; //取得浏览器的userAgent字符串 
 
         if (this.isIE) {
-            let reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+            let reIE = new RegExp("msie (\\d+\\.\\d+);");
             reIE.test(userAgent);
             let fIEVersion = parseFloat(RegExp["$1"]);
-            if (userAgent.indexOf('MSIE 6.0') != -1) {
+            if (userAgent.indexOf('msie 6.0') != -1) {
                 return "IE6";
             } else if (fIEVersion == 7) {
                 return "IE7";
@@ -59,7 +61,7 @@ export class checkBrowser {
                 return "IE9";
             } else if (fIEVersion == 10) {
                 return "IE10";
-            } else if (userAgent.toLowerCase().match(/rv:([\d.]+)\) like gecko/)) {
+            } else if (userAgent.match(/rv:([\d.]+)\) like gecko/)) {
                 return "IE11";
             } else {
                 return "0"
@@ -84,8 +86,23 @@ export class checkBrowser {
     }
 
 
+    getBrowserInfo(){
+        const userAgent = this.userAgent
+        let browserInfo = {
+            browserType:this.getBrowserType(),
+            browserVersion:this.getBrowserVersion(),
+            wechat:this.Wechat,
+            wechatVersion:''
+        }
+        
+        if(this.Wechat){
+            browserInfo.wechatVersion = userAgent.match(/micromessenger\/([\d\.]+)/i)[1]
+        }
+        return browserInfo
+    }
+
     getOsInfo() {
-        const userAgent = this.userAgent.toLowerCase();
+        const userAgent = this.userAgent;
         let name = '';
         let version = "";
         if (userAgent.includes("win")) {
@@ -111,7 +128,9 @@ export class checkBrowser {
             name = "Mac";
         } else if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
             name = "Unix";
-        } else if (userAgent.includes("linux")) {
+        } else if(userAgent.includes("ipad")){
+            name = 'Ipad'
+        }else if (userAgent.includes("linux")) {
             if (userAgent.includes("android")) {
                 name = "Android"
             } else {
