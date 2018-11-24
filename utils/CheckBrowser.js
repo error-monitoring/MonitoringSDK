@@ -25,7 +25,7 @@ export class checkBrowser {
         // this.QQBrowser = !this.userAgent.indexOf('MQQBrowser') > -1 && this.userAgent.indexOf('QQ/');
         this.isWinWeChat = !!this.userAgent.match(/windowswechat/i); // PC微信端
 
-        
+
     }
 
 
@@ -34,19 +34,19 @@ export class checkBrowser {
         let Version = '';
         const userAgent = this.userAgent
 
-        if(this.isWechat){
+        if (this.isWechat) {
             return userAgent.match(/micromessenger\/([\d\.]+)/i)[1]
-        }else{
+        } else {
             let s;
-        (s = userAgent.match(/rv:([\d.]+)\) like gecko/)) ? Version = s[1]:
-            (s = userAgent.match(/msie ([\d.]+)/)) ? Version = s[1] :
-            (s = userAgent.match(/firefox\/([\d.]+)/)) ? Version = s[1] :
-            (s = userAgent.match(/chrome\/([\d.]+)/)) ? Version = s[1] :
-            (s = userAgent.match(/opera.([\d.]+)/)) ? Version = s[1] :
-            (s = userAgent.match(/version\/([\d.]+).*safari/)) ? Version = s[1] : 0;
-        return Version
+            (s = userAgent.match(/rv:([\d.]+)\) like gecko/)) ? Version = s[1]:
+                (s = userAgent.match(/msie ([\d.]+)/)) ? Version = s[1] :
+                (s = userAgent.match(/firefox\/([\d.]+)/)) ? Version = s[1] :
+                (s = userAgent.match(/chrome\/([\d.]+)/)) ? Version = s[1] :
+                (s = userAgent.match(/opera.([\d.]+)/)) ? Version = s[1] :
+                (s = userAgent.match(/version\/([\d.]+).*safari/)) ? Version = s[1] : 0;
+            return Version
         }
-        
+
 
     }
 
@@ -89,29 +89,29 @@ export class checkBrowser {
         if (this.isEdge) {
             return "Edge";
         }
-        if(this.isWechat){
+        if (this.isWechat) {
             return "Wechat";
         }
-        if(this.isWinWeChat){
+        if (this.isWinWeChat) {
             return "PcWechat";
         }
     }
 
 
-    getBrowserInfo(){
+    getBrowserInfo() {
         let browserInfo = {
-            browserType:this.getBrowserType(),
-            browserVersion:this.getBrowserVersion(),
-            wechat:this.isWechat,
+            browserType: this.getBrowserType(),
+            browserVersion: this.getBrowserVersion(),
+            wechat: this.isWechat,
         }
-        
-        
+
+
         return browserInfo
     }
 
     getOsInfo() {
         const userAgent = this.userAgent;
-        console.log(userAgent,'userAgent')
+        console.log(userAgent, 'userAgent')
         let name = '';
         let version = "";
         if (userAgent.includes("win")) {
@@ -131,15 +131,21 @@ export class checkBrowser {
             } else if (userAgent.includes("windows nt 6.2") || userAgent.includes("windows nt 10.0")) {
                 version = "Windows 10";
             }
-        } else if (userAgent.includes("iphone")) {
+        }
+
+        if (userAgent.includes("iphone")) {
             name = "Iphone";
-        } else if (userAgent.includes("mac")) {
+        }
+        if (userAgent.includes("mac")) {
             name = "Mac";
-        } else if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
+        }
+        if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
             name = "Unix";
-        } else if(userAgent.includes("ipad")){
+        }
+        if (userAgent.includes("ipad")) {
             name = 'Ipad'
-        }else if (userAgent.includes("linux")) {
+        }
+        if (userAgent.includes("linux")) {
             if (userAgent.includes("android")) {
                 name = "Android"
             } else {
@@ -148,12 +154,12 @@ export class checkBrowser {
 
         }
         console.log({
-            osVersion:version,
-            osName:name
+            osVersion: version,
+            osName: name
         })
         return {
-            osVersion:version,
-            osName:name
+            osVersion: version,
+            osName: name
         };
     }
 
