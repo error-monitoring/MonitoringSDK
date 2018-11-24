@@ -1,6 +1,6 @@
 export class checkBrowser {
     constructor(userAgent = navigator.userAgent) {
-        this.userAgent = userAgent.toLocaleLowerCase();
+        this.userAgent = userAgent.toLowerCase();
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
         // this.IPhone = this.userAgent.indexOf("iPhone") != -1;
         // this.Ios = this.userAgent.indexOf('iPhone') > -1 || this.userAgent.indexOf('Mac') > -1;
@@ -99,12 +99,10 @@ export class checkBrowser {
 
 
     getBrowserInfo(){
-        const userAgent = this.userAgent
         let browserInfo = {
             browserType:this.getBrowserType(),
             browserVersion:this.getBrowserVersion(),
             wechat:this.isWechat,
-            wechatVersion:''
         }
         
         
@@ -148,6 +146,10 @@ export class checkBrowser {
             }
 
         }
+        console.log({
+            osVersion:version,
+            osName:version
+        })
         return {
             osVersion:version,
             osName:version
