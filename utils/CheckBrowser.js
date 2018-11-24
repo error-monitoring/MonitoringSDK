@@ -18,12 +18,12 @@ export class checkBrowser {
         //判断是否Chrome浏览器
         this.isChrome = !this.isEdge && this.userAgent.includes('chrome') && this.userAgent.includes('safari');
         // this.IE11 = this.userAgent.indexOf('Trident') > -1 && this.userAgent.indexOf('rv:11.0') > -1;
-        this.Wechat = !!this.userAgent.match(/micromessenger/i);
+        this.isWechat = !!this.userAgent.match(/micromessenger/i);
         // this.Weibo = !!this.userAgent.match(/Weibo/i);
         // this.UCBrowser = !!this.userAgent.match(/UCBrowser/i);
         // this.QQ = !!this.userAgent.match(/QQ/i);
         // this.QQBrowser = !this.userAgent.indexOf('MQQBrowser') > -1 && this.userAgent.indexOf('QQ/');
-        // this.WinWeChat = !!this.userAgent.match(/WindowsWeChat/i); // PC微信端
+        this.isWinWeChat = !!this.userAgent.match(/windowswechat/i); // PC微信端
 
         
     }
@@ -83,6 +83,12 @@ export class checkBrowser {
         if (this.isEdge) {
             return "Edge";
         }
+        if(this.isWechat){
+            return "Wechat";
+        }
+        if(this.isWinWeChat){
+            return "PcWechat";
+        }
     }
 
 
@@ -95,7 +101,7 @@ export class checkBrowser {
             wechatVersion:''
         }
         
-        if(this.Wechat){
+        if(this.isWechat){
             browserInfo.wechatVersion = userAgent.match(/micromessenger\/([\d\.]+)/i)[1]
         }
         return browserInfo
