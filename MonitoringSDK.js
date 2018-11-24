@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 05:07:07
+ * @Last Modified time: 2018-11-24 05:08:41
  */
 
 import {
@@ -89,7 +89,7 @@ class MonitoringSDK {
             const browser = new checkBrowser()
             DataStore.getInstance()
                 .set('osInfo', browser.getOsInfo())
-                .set('browerInfo', browser.getBrowerInfo())
+                .set('browerInfo', browser.getBrowserInfo())
                 .set('app_key', app_key)
                 .set('debug', debug)
                 .set('error_code', error_code)
