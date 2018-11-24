@@ -2,7 +2,7 @@ export class checkBrowser {
     constructor(userAgent = navigator.userAgent) {
         this.userAgent = userAgent.toLowerCase();
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
-        // this.IPhone = this.userAgent.indexOf("iPhone") != -1;
+        // this.isIPhone = this.userAgent.indexOf("iphone") != -1;
         // this.Ios = this.userAgent.indexOf('iPhone') > -1 || this.userAgent.indexOf('Mac') > -1;
         // this.Ipad = this.userAgent.indexOf('iPad') > -1;
         //判断是否Opera浏览器 
