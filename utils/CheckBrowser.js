@@ -111,6 +111,7 @@ export class checkBrowser {
 
     getOsInfo() {
         const userAgent = this.userAgent;
+        console.log(userAgent,'userAgent')
         let name = '';
         let version = "";
         if (userAgent.includes("win")) {
