@@ -33,7 +33,11 @@ export class checkBrowser {
     getBrowserVersion() {
         let Version = '';
         const userAgent = this.userAgent
-        let s;
+
+        if(this.isWechat){
+            return userAgent.match(/micromessenger\/([\d\.]+)/i)[1]
+        }else{
+            let s;
         (s = userAgent.match(/rv:([\d.]+)\) like gecko/)) ? Version = s[1]:
             (s = userAgent.match(/msie ([\d.]+)/)) ? Version = s[1] :
             (s = userAgent.match(/firefox\/([\d.]+)/)) ? Version = s[1] :
@@ -41,6 +45,8 @@ export class checkBrowser {
             (s = userAgent.match(/opera.([\d.]+)/)) ? Version = s[1] :
             (s = userAgent.match(/version\/([\d.]+).*safari/)) ? Version = s[1] : 0;
         return Version
+        }
+        
 
     }
 
@@ -97,13 +103,11 @@ export class checkBrowser {
         let browserInfo = {
             browserType:this.getBrowserType(),
             browserVersion:this.getBrowserVersion(),
-            wechat:this.Wechat,
+            wechat:this.isWechat,
             wechatVersion:''
         }
         
-        if(this.isWechat){
-            browserInfo.wechatVersion = userAgent.match(/micromessenger\/([\d\.]+)/i)[1]
-        }
+        
         return browserInfo
     }
 
