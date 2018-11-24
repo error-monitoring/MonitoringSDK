@@ -153,7 +153,7 @@ export class checkBrowser {
         })
         return {
             osVersion:version,
-            osName:version
+            osName:name
         };
     }
 
