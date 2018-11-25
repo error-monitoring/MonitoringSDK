@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 19:23:48
+ * @Last Modified time: 2018-11-24 19:36:56
  */
 
 import {
@@ -42,12 +42,15 @@ import {
     checkBrowser
 } from './utils/CheckBrowser'
 
+import {Print} from './lib/Print'
+
 
 
 
 
 class MonitoringSDK {
     constructor() {
+        Print.getInstance().printDebug('框架开始初始化')
         this.getConfig()
     }
 
