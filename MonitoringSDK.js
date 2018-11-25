@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 19:50:37
+ * @Last Modified time: 2018-11-25 00:00:39
  */
 
 import {
@@ -99,7 +99,8 @@ class MonitoringSDK {
                 .set('error_code', error_code)
                 .set('is_server_init', is_server_init)
                 .set('m_user_id', m_user_id)
-
+                Print.getInstance().printDebug(browser.getOsInfo(),'osInfo')
+                Print.getInstance().printDebug(browser.getBrowserInfo(),'browerInfo')
             // 初始化错误监听
             const listenError = new ListenError()
             window.listenError = listenError
