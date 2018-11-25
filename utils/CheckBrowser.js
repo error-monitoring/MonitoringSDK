@@ -2,9 +2,9 @@ export class checkBrowser {
     constructor(userAgent = navigator.userAgent) {
         this.userAgent = userAgent.toLowerCase();
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
-        // this.isIPhone = this.userAgent.indexOf("iphone") != -1;
-        // this.Ios = this.userAgent.indexOf('iPhone') > -1 || this.userAgent.indexOf('Mac') > -1;
-        // this.Ipad = this.userAgent.indexOf('iPad') > -1;
+        this.isIPhone = this.userAgent.includes("iphone");
+        this.isIos = this.userAgent.includes('iphone') || this.userAgent.includes('mac');
+        this.isIpad = this.userAgent.includes('iPad');
         //判断是否Opera浏览器 
         this.isOpera = this.userAgent.includes("opera");
         //判断是否IE浏览器
@@ -132,16 +132,16 @@ export class checkBrowser {
             }
         }
 
-        if (userAgent.includes("iphone")) {
+        if (this.isIPhone) {
             name = "Iphone";
         }
-        if (userAgent.includes("mac")) {
+        if (this.isIos) {
             name = "Mac";
         }
         if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
             name = "Unix";
         }
-        if (userAgent.includes("ipad")) {
+        if (this.isIpad) {
             name = 'Ipad'
         }
         if (userAgent.includes("linux")) {
