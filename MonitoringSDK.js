@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 19:36:56
+ * @Last Modified time: 2018-11-24 19:38:12
  */
 
 import {
@@ -50,6 +50,7 @@ import {Print} from './lib/Print'
 
 class MonitoringSDK {
     constructor() {
+        console.log('框架开始初始化','111')
         Print.getInstance().printDebug('框架开始初始化')
         this.getConfig()
     }
