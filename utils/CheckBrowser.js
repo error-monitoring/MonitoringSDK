@@ -4,7 +4,7 @@ export class checkBrowser {
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
         this.isIPhone = this.userAgent.includes("iphone");
         this.isIos = this.userAgent.includes('iphone') || this.userAgent.includes('mac');
-        this.isIpad = this.userAgent.includes('iPad');
+        this.isIpad = this.userAgent.includes('ipad');
         //判断是否Opera浏览器 
         this.isOpera = this.userAgent.includes("opera");
         //判断是否IE浏览器
