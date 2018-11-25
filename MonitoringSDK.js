@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 19:19:37
+ * @Last Modified time: 2018-11-24 19:23:48
  */
 
 import {
@@ -100,7 +100,7 @@ class MonitoringSDK {
 
             // 初始化错误监听
             const listenError = new ListenError()
-            window.errorHandler = listenError.errorHandler
+            window.listenError = listenError
             // 初始化性能监控
             new ListenPerformance()
             // 初始化接口监控
