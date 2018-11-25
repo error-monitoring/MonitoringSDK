@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-24 19:44:32
+ * @Last Modified time: 2018-11-24 19:50:37
  */
 
 import {
@@ -62,7 +62,7 @@ class MonitoringSDK {
             this.init(params)
 
         } else {
-            throw new Error('检查 script 标签是否有 id=MonitoringSDK')
+            Print.getInstance().throwError('检查 script 标签是否有 id=MonitoringSDK')
         }
     }
 
@@ -108,9 +108,9 @@ class MonitoringSDK {
             // 初始化接口监控
             new ListenAjax()
         } else {
-            throw new Error('请填入你的app_key')
+            Print.getInstance().throwError('请填入你的app_key')
         }
-        Print.getInstance().printDebug('MonitoringSDK 初始化完成')
+        
 
     }
 
