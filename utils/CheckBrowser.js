@@ -137,15 +137,16 @@ export class checkBrowser {
         if (this.isIos) {
             name = "Mac";
         }
+        if (this.isIpad) {
+            name = 'Ipad'
+        }
         if (this.isIPhone) {
             name = "Iphone";
         }
         if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
             name = "Unix";
         }
-        if (this.isIpad) {
-            name = 'Ipad'
-        }
+        
         if (userAgent.includes("linux")) {
             if (userAgent.includes("android")) {
                 name = "Android"
