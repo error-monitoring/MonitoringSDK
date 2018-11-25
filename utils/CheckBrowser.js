@@ -133,11 +133,12 @@ export class checkBrowser {
             }
         }
 
-        if (this.isIPhone) {
-            name = "Iphone";
-        }
+        
         if (this.isIos) {
             name = "Mac";
+        }
+        if (this.isIPhone) {
+            name = "Iphone";
         }
         if (userAgent.includes("x11") || userAgent.includes("unix") || userAgent.includes("sunname") || userAgent.includes("bsd")) {
             name = "Unix";
