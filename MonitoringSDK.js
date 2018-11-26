@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-25 00:00:39
+ * @Last Modified time: 2018-11-25 03:12:56
  */
 
 import {
@@ -13,12 +13,6 @@ import {
 import {
     DataStore
 } from './lib/DataStore'
-
-
-// import {
-//     getOsInfo,
-//     getBrowerInfo
-// } from './utils/UserAgent'
 
 import {
     ListenPerformance
@@ -42,10 +36,9 @@ import {
     checkBrowser
 } from './utils/CheckBrowser'
 
-import {Print} from './lib/Print'
-
-
-
+import {
+    Print
+} from './lib/Print'
 
 
 class MonitoringSDK {
@@ -53,8 +46,7 @@ class MonitoringSDK {
         this.getConfig()
     }
 
-
-
+    // 获取sdk配置信息
     getConfig() {
         const MonitoringSDK = document.getElementById('MonitoringSDK')
         if (MonitoringSDK) {
@@ -90,17 +82,19 @@ class MonitoringSDK {
 
         }
         if (app_key) {
-            const browser = new checkBrowser()
+            const {getOsInfo, getBrowserInfo} = new checkBrowser()
+            // 初始化信息
             DataStore.getInstance()
-                .set('osInfo', browser.getOsInfo())
-                .set('browerInfo', browser.getBrowserInfo())
+                .set('osInfo', getOsInfo())
+                .set('browerInfo', getBrowserInfo())
                 .set('app_key', app_key)
                 .set('debug', debug)
                 .set('error_code', error_code)
                 .set('is_server_init', is_server_init)
                 .set('m_user_id', m_user_id)
-                Print.getInstance().printDebug(browser.getOsInfo(),'osInfo')
-                Print.getInstance().printDebug(browser.getBrowserInfo(),'browerInfo')
+
+            Print.getInstance().printDebug(getOsInfo(), 'osInfo')
+                .printDebug(getBrowserInfo(), 'browerInfo')
             // 初始化错误监听
             const listenError = new ListenError()
             window.listenError = listenError
@@ -111,7 +105,7 @@ class MonitoringSDK {
         } else {
             Print.getInstance().throwError('请填入你的app_key')
         }
-        
+
 
     }
 

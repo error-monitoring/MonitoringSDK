@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "serving",
+            "name": "merculet-monitoring-sdk",
             "script": "serving.js",
             "watch": "true",
             "exec_mode" : "cluster",
