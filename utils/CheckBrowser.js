@@ -1,5 +1,5 @@
 export class checkBrowser {
-    constructor(userAgent = navigator.userAgent) {
+    constructor(userAgent = window.navigator.userAgent) {
         this.userAgent = userAgent.toLowerCase();
         // this.Android = this.userAgent.indexOf('Android') > -1 || this.userAgent.indexOf('Linux') > -1;
         this.isIPhone = this.userAgent.includes("iphone");

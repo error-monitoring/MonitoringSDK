@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-11-15 13:28:51 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-25 03:12:56
+ * @Last Modified time: 2018-11-27 01:08:51
  */
 
 import {
@@ -82,19 +82,19 @@ class MonitoringSDK {
 
         }
         if (app_key) {
-            const {getOsInfo, getBrowserInfo} = new checkBrowser()
+            const browser = new checkBrowser()
             // 初始化信息
             DataStore.getInstance()
-                .set('osInfo', getOsInfo())
-                .set('browerInfo', getBrowserInfo())
+                .set('osInfo', browser.getOsInfo())
+                .set('browerInfo', browser.getBrowserInfo())
                 .set('app_key', app_key)
                 .set('debug', debug)
                 .set('error_code', error_code)
                 .set('is_server_init', is_server_init)
                 .set('m_user_id', m_user_id)
 
-            Print.getInstance().printDebug(getOsInfo(), 'osInfo')
-                .printDebug(getBrowserInfo(), 'browerInfo')
+            Print.getInstance().printDebug(browser.getOsInfo(), 'osInfo')
+                .printDebug(browser.getBrowserInfo(), 'browerInfo')
             // 初始化错误监听
             const listenError = new ListenError()
             window.listenError = listenError
