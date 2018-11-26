@@ -34,7 +34,7 @@ class Serving {
     }
 
     routers() {
-        this.router.all('/api/send/event', async (ctx, next) => {
+        this.router.all('/sdk/send/event', async (ctx, next) => {
             let params = {}
             if(ctx.method == 'GET'){
                 params = ctx.request.query
@@ -43,15 +43,11 @@ class Serving {
             }
             let {info} = params
             let {data} = new Decrypt(info)
-            // console.log('====')
-            // console.log(data)
-            // console.log(ctx.ip)
-            console.log(ctx.request.header)
             ctx.status = 200
             ctx.body = data
         })
 
-        this.router.get('/api/build', async (ctx, next) => {
+        this.router.get('/sdk/build', async (ctx, next) => {
             console.log(buildPath)
             child_process.execFile(buildPath, [], { shell: '/bin/bash' }, (error, stdout, stderr) => {
                 if(!error){
@@ -65,10 +61,6 @@ class Serving {
                 data:"",
                 message:''
             }
-        })
-        this.router.all('/api/404', async (ctx, next) => {
-            ctx.status = 500
-            
         })
     }
 

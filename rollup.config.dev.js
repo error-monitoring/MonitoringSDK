@@ -22,7 +22,7 @@ import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 export default {
   input: './MonitoringSDK.js',
   output: {
-    file: `./dist/MonitoringSDK.js`,
+    file: `./dist/sdk/MonitoringSDK.js`,
     format: 'iife',
     name: "MonitoringSDK",
   },
