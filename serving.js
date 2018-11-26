@@ -69,7 +69,7 @@ class Serving {
         if(process.env.EVENT == 'dev'){
             this.app.listen(7401, ip.address());
         }else{
-            this.app.listen(7401, '172.16.100.38');
+            this.app.listen(7401, '127.0.0.1');
         }
         console.log(`服务启动成功 http://${ip.address()}:7401`)
     }
