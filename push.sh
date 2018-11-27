@@ -5,7 +5,7 @@ git commit -m 'test-commit'
 git push
 
 
-curl http://47.98.132.24:7401/api/build
+curl http://minecraft.cssandjs.com/sdk/build
 
 # which yarn
 
