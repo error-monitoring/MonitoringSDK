@@ -44,7 +44,7 @@ export default {
     // (process.env.NODE_ENV === 'prod' && uglify()),
     resolve(),
     commonjs(),
-    babel(getBabelOptions({ useESModules: true })),
+    babel(),
     globals(),
     builtins(),
     // (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
