@@ -2,7 +2,7 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 13:52:36
+ * @Last Modified time: 2018-11-30 16:49:39
  */
 
 import { ListenError } from "./lib/listen-error";
@@ -20,6 +20,8 @@ import { setCookie, getCookie } from "./utils/cookie";
 import { checkBrowser } from "./utils/check-browser";
 
 import { Print } from "./lib/print";
+
+import "es6-symbol/polyfill";
 
 class MonitoringSDK {
   constructor() {
