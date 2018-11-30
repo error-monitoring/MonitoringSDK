@@ -9,5 +9,5 @@ module.exports = {
       }
     ]
   ],
-  plugins:["babel-plugin-array-includes","@babel/plugin-transform-typeof-symbol"]
+  plugins:["babel-plugin-array-includes","@babel/plugin-transform-for-of","@babel/plugin-transform-typeof-symbol"]
 };
