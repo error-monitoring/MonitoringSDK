@@ -2,10 +2,10 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 16:56:10
+ * @Last Modified time: 2018-11-30 17:13:49
  */
 
-import "es6-symbol";
+// import "es6-symbol";
 
 import { ListenError } from "./lib/listen-error";
 
