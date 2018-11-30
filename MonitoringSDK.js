@@ -2,11 +2,12 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 20:04:04
+ * @Last Modified time: 2018-11-30 20:14:39
  */
 
 import "core-js/modules/es6.string.includes";
-import "core-js/modules/es6.symbol"
+import "core-js/library/fn/symbol/iterator.js";
+import "core-js/library/es6/symbol.js";
 // import "core-js/modules/es6.symbol.async-iterator"
 // import "@babel/polyfill/lib/core-js/modules/es7.array.includes";
 import { ListenError } from "./lib/listen-error";
