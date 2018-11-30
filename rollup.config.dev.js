@@ -27,7 +27,6 @@ const getBabelOptions = ({ useESModules }) => ({
 
 export default {
   input: './MonitoringSDK.js',
-  // input: './test.js',
   output: {
     file: `./dist/sdk/MonitoringSDK.js`,
     format: 'iife',
@@ -41,15 +40,11 @@ export default {
     //   "process.env._Replace_keyStr": JSON.stringify(''),
     // }),
     // 判断环境是否进行代码压缩
-    // (process.env.NODE_ENV === 'prod' && uglify()),
-    resolve(),
-    commonjs(),
+    (process.env.NODE_ENV === 'prod' && uglify()),
+    // resolve(),
+    // commonjs(),
     babel(),
-    globals(),
-    builtins(),
-    // (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
-    //   compact: true,
-
-    // })),
+    // globals(),
+    // builtins(),
   ]
 };

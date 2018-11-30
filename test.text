@@ -106,3 +106,11 @@ for (let item of script) {
       // plugins:["array-includes"],
       exclude: 'node_modules/**',
     }
+
+
+      for (let [key, value] of this.getTypeError()) {
+          if (stackInfo.includes(key)) {
+            errorType = key;
+            errorTypeDetails = value;
+          }
+        }
