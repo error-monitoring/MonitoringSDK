@@ -40,7 +40,7 @@ export default {
     babel({
       babelrc: false,
       presets: ["es2015-rollup"],
-      plugins:["array-includes"],
+      plugins:["array-includes","transform-es2015-typeof-symbol"],
       exclude: 'node_modules/**',
     }),
     globals(),
