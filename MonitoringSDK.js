@@ -2,11 +2,10 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 17:13:49
+ * @Last Modified time: 2018-11-30 19:32:03
  */
 
-// import "es6-symbol";
-
+import "@babel/polyfill";
 import { ListenError } from "./lib/listen-error";
 
 import { DataStore } from "./lib/data-store";

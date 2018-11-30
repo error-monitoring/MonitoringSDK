@@ -35,8 +35,8 @@ export default {
     // }),
     // 判断环境是否进行代码压缩
     // (process.env.NODE_ENV === 'prod' && uglify()),
-    // resolve(),
-    // commonjs(),
+    resolve(),
+    commonjs(),
     babel(),
     // globals(),
     // builtins(),
