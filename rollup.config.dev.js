@@ -18,9 +18,16 @@ import replace from 'rollup-plugin-replace';
 
 import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 
+const getBabelOptions = ({ useESModules }) => ({
+  exclude: '**/node_modules/**',
+  runtimeHelpers: true,
+  plugins: [['@babel/transform-runtime', { regenerator: false, useESModules }]],
+})
+
 
 export default {
   input: './MonitoringSDK.js',
+  // input: './test.js',
   output: {
     file: `./dist/sdk/MonitoringSDK.js`,
     format: 'iife',
@@ -37,9 +44,9 @@ export default {
     // (process.env.NODE_ENV === 'prod' && uglify()),
     resolve(),
     commonjs(),
-    babel(),
-    // globals(),
-    // builtins(),
+    babel(getBabelOptions({ useESModules: true })),
+    globals(),
+    builtins(),
     // (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
     //   compact: true,
 
