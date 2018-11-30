@@ -13,18 +13,19 @@
     "jenkins": "sh push.sh"
   },
   "dependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-transform-typeof-symbol": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "babel-plugin-array-includes": "^2.0.3",
-    "es6-symbol": "^3.1.1",
     "ip": "^1.1.5",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa2-cors": "^2.0.6",
+    "koa2-cors": "^2.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-transform-for-of": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "babel-plugin-array-includes": "^2.0.3",
     "nodemon": "^1.18.7",
     "rollup": "^0.67.3",
     "rollup-plugin-babel": "^4.0.3",
@@ -38,8 +39,5 @@
     "rollup-plugin-shift-header": "^1.0.1",
     "rollup-plugin-uglify": "^6.0.0",
     "rollup-plugin-uglify-es": "^0.0.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-transform-for-of": "^7.0.0"
   }
 }

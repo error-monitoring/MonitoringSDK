@@ -4,10 +4,13 @@ module.exports = {
       "@babel/preset-env",
       {
         targets: {
-          browsers: ["ie >= 8", "chrome >= 52"]
-        },
+          browsers: ["ie >= 6", "chrome >= 52"]
+        }
       }
     ]
   ],
-  plugins:["babel-plugin-array-includes","@babel/plugin-transform-for-of","@babel/plugin-transform-typeof-symbol"]
+  plugins: [
+    "babel-plugin-array-includes",
+    "@babel/plugin-transform-for-of"
+  ]
 };
