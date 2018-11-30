@@ -9,11 +9,12 @@
     "dev-s": "EVENT=dev nodemon serving.js ",
     "dev": "NODE_ENV=dev rollup --watch --config rollup.config.dev.js",
     "build": "NODE_ENV=prod rollup --config rollup.config.dev.js",
-    "curl":"curl http://minecraft.cssandjs.com/sdk/build",
-    "jenkins":"sh push.sh"
+    "curl": "curl http://minecraft.cssandjs.com/sdk/build",
+    "jenkins": "sh push.sh"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "babel-plugin-array-includes": "^2.0.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babelrc-rollup": "^3.0.0",

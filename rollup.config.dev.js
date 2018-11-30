@@ -39,7 +39,7 @@ export default {
     commonjs(),
     babel({
       babelrc: false,
-      presets: ["es2015-rollup"],
+      presets: ["es2015-rollup","array-includes"],
       exclude: 'node_modules/**',
     }),
     globals(),
