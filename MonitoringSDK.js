@@ -2,9 +2,9 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 20:39:06
+ * @Last Modified time: 2018-11-30 20:41:13
  */
-import "es6-symbol"
+import "es6-symbol/polyfill"
 import { ListenError } from "./lib/listen-error";
 
 import { DataStore } from "./lib/data-store";
