@@ -2,10 +2,10 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 19:41:18
+ * @Last Modified time: 2018-11-30 19:59:28
  */
 
-import "core-js/modules/es.array.includes";
+import "core-js/modules/es6.string.includes";
 import { ListenError } from "./lib/listen-error";
 
 import { DataStore } from "./lib/data-store";
