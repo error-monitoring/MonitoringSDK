@@ -29,22 +29,17 @@ export default {
 
   plugins: [
     // 注入全局变量
-    replace({
-      "process.env._keyStr": JSON.stringify(''),
-      "process.env._Replace_keyStr": JSON.stringify(''),
-    }),
+    // replace({
+    //   "process.env._keyStr": JSON.stringify(''),
+    //   "process.env._Replace_keyStr": JSON.stringify(''),
+    // }),
     // 判断环境是否进行代码压缩
     // (process.env.NODE_ENV === 'prod' && uglify()),
-    resolve(),
-    commonjs(),
-    babel({
-      babelrc: false,
-      presets: ["es2015-rollup"],
-      plugins:["array-includes","transform-es2015-typeof-symbol"],
-      exclude: 'node_modules/**',
-    }),
-    globals(),
-    builtins(),
+    // resolve(),
+    // commonjs(),
+    babel(),
+    // globals(),
+    // builtins(),
     // (process.env.NODE_ENV === 'prod' && obfuscatorPlugin({
     //   compact: true,
 

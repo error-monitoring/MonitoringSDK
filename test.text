@@ -97,3 +97,12 @@ for (let item of script) {
         this.QQBrowser=!this.userAgent.indexOf('MQQBrowser') > -1 && this.userAgent.indexOf('QQ/');
         this.WinWeChat=!!this.userAgent.match(/WindowsWeChat/i); // PC微信端
     }
+
+
+
+    {
+      babelrc: false,
+      presets: [['env']],
+      // plugins:["array-includes"],
+      exclude: 'node_modules/**',
+    }
