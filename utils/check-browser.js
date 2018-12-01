@@ -110,8 +110,8 @@ export class checkBrowser {
 
   getBrowserInfo() {
     let browserInfo = {
-      browserType: this.getBrowserType(),
-      browserVersion: this.getBrowserVersion(),
+      browser_type: this.getBrowserType(),
+      browser_version: this.getBrowserVersion(),
       wechat: this.isWechat
     };
 
