@@ -2,7 +2,7 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-11-30 23:51:36
+ * @Last Modified time: 2018-12-01 08:34:51
  */
 
 import { ListenError } from "./lib/listen-error";
@@ -59,8 +59,8 @@ class MonitoringSDK {
       const browser = new checkBrowser();
       // 初始化信息
       DataStore.getInstance()
-        .set("osInfo", browser.getOsInfo())
-        .set("browerInfo", browser.getBrowserInfo())
+        .set("os_info", browser.getOsInfo())
+        .set("brower_info", browser.getBrowserInfo())
         .set("app_key", app_key)
         .set("debug", debug)
         .set("error_code", error_code)
@@ -68,8 +68,8 @@ class MonitoringSDK {
         .set("m_user_id", m_user_id);
 
       Print.getInstance()
-        .printDebug(browser.getOsInfo(), "osInfo")
-        .printDebug(browser.getBrowserInfo(), "browerInfo");
+        .printDebug(browser.getOsInfo(), "os_info")
+        .printDebug(browser.getBrowserInfo(), "brower_info");
       // 初始化错误监听
       const listenError = new ListenError();
       //   暴露全局方法给 vue 或者react 用于框架内部捕获
