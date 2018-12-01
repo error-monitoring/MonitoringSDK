@@ -179,8 +179,8 @@ export class checkBrowser {
       }
     }
     return {
-      osVersion: version,
-      osName: name
+      os_version: version,
+      os_name: name
     };
   }
 }
