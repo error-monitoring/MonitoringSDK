@@ -2,7 +2,7 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-01 08:34:51
+ * @Last Modified time: 2018-12-12 12:46:43
  */
 
 import { ListenError } from "./lib/listen-error";
@@ -67,9 +67,9 @@ class MonitoringSDK {
         .set("is_server_init", is_server_init)
         .set("m_user_id", m_user_id);
 
-      Print.getInstance()
-        .printDebug(browser.getOsInfo(), "os_info")
-        .printDebug(browser.getBrowserInfo(), "brower_info");
+      // Print.getInstance()
+      //   .printDebug(browser.getOsInfo(), "os_info")
+      //   .printDebug(browser.getBrowserInfo(), "brower_info");
       // 初始化错误监听
       const listenError = new ListenError();
       //   暴露全局方法给 vue 或者react 用于框架内部捕获
