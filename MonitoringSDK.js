@@ -2,7 +2,7 @@
  * @Author: wenquan.huang
  * @Date: 2018-11-15 13:28:51
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-12 12:46:43
+ * @Last Modified time: 2018-12-13 14:57:45
  */
 
 import { ListenError } from "./lib/listen-error";
@@ -73,11 +73,11 @@ class MonitoringSDK {
       // 初始化错误监听
       const listenError = new ListenError();
       //   暴露全局方法给 vue 或者react 用于框架内部捕获
-      window.listenError = listenError;
+      window.errorVueHandler = listenError.errorVueHandler;
       // 初始化性能监控
       new ListenPerformance();
       // 初始化接口监控
-      new ListenAjax();
+      // new ListenAjax();
     } else {
       Print.getInstance().throwError("请填入你的app_key");
     }
