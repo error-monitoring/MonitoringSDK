@@ -16,13 +16,7 @@ import globals from 'rollup-plugin-node-globals';
 
 import replace from 'rollup-plugin-replace';
 
-import obfuscatorPlugin from 'rollup-plugin-javascript-obfuscator';
 
-const getBabelOptions = ({ useESModules }) => ({
-  exclude: '**/node_modules/**',
-  runtimeHelpers: true,
-  plugins: [['@babel/transform-runtime', { regenerator: false, useESModules }]],
-})
 
 
 export default {
@@ -35,16 +29,16 @@ export default {
 
   plugins: [
     // 注入全局变量
-    // replace({
-    //   "process.env._keyStr": JSON.stringify(''),
-    //   "process.env._Replace_keyStr": JSON.stringify(''),
-    // }),
+    replace({
+      "process.env._keyStr": JSON.stringify(''),
+      "process.env._Replace_keyStr": JSON.stringify(''),
+    }),
     // 判断环境是否进行代码压缩
-    // (process.env.NODE_ENV === 'prod' && uglify()),
-    // resolve(),
-    // commonjs(),
+    (process.env.NODE_ENV === 'prod' && uglify()),
+    resolve(),
+    commonjs(),
     babel(),
-    // globals(),
-    // builtins(),
+    globals(),
+    builtins(),
   ]
 };
